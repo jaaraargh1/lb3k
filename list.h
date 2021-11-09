@@ -46,7 +46,7 @@ void remove(int index);
   
 private:
 void print_helper(Node * curr) const;
-  
+void insert_helper(Node*& node, int value);  
 struct Node
 {
   int value{};

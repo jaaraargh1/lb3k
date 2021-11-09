@@ -27,10 +27,11 @@ TEST_CASE("Insert first / head "){
 
   List l{};
   l.insert(1);
-    l.insert(3);
-  CHECK(l.is_empty()==false); 
+  
+    
+  CHECK(l.is_empty()==false);
 }
-/*
+
 TEST_CASE("Insert 4 nodes "){
 
   List l{};
@@ -44,7 +45,6 @@ TEST_CASE("Insert 4 nodes "){
   
   CHECK(l.is_empty()==false);
 }
-/*
 
 TEST_CASE("print "){
 
@@ -80,7 +80,6 @@ TEST_CASE("size "){
   CHECK(l.getSize()==10);
 }
 
-
 TEST_CASE("index at test "){
 
   List l{};
@@ -93,12 +92,11 @@ TEST_CASE("index at test "){
   
 }
 
-
 TEST_CASE("Remove list"){
 
   List l{};
   l.insert(155);
-  l.remove(0);
+  l.remove(155);
   CHECK(l.is_empty());
   l.insert(100);
   l.insert(5);
@@ -106,20 +104,11 @@ TEST_CASE("Remove list"){
   l.insert(10);
   l.insert(23);
   l.remove(4);
-}
-
-TEST_CASE("remove a middle object"){
-
-  List l{};
-  l.insert(155); // 5
-  l.insert(100);// 4
-  l.insert(5);// 1
-  l.insert(4); // 0
-  l.insert(10);// 2
-  l.insert(23);// 3
-  l.print();
-  l.remove(4);
-  l.print();
+  l.remove(23);
+  l.remove(10);
+  l.remove(100);
+  l.remove(5);
+  CHECK(l.is_empty()==true);
 }
 
 TEST_CASE("Test copy"){
@@ -166,7 +155,6 @@ TEST_CASE("Test Move"){
 }
 
 
-*/
 //List l2;
 //l2.insert(1);
 //List l{std::move(l2)};

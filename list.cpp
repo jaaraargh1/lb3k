@@ -24,51 +24,43 @@ List::List(List const& other):first{nullptr}{}
 bool List::is_empty() const {
   return first == nullptr;
 }
-
-void List::insert(int val) {
+void List::insert(int value){
+  insert_helper(first, value);
+}
+void List::insert_helper(Node*& node, int value) {
   int size{0};
 
   
   //if it is empty insert first
   if (is_empty()) {
     Node* tmp = new Node();
-    tmp->value=val;
+    tmp->value=value;
     first = tmp;
+    tmp = nullptr;
+    return;
   }
-  /*  
-  // in the middle
-  else  {
-    Node* newnode = new Node();
-    Node* tmpnode = new Node();
-    newnode = first;
+  else if (node->value >= value) { 
+    Node* nextNode{node->next};
+    int tmpVal = node->value;
+    Node* temp =new Node();
+    temp->value = tmpVal;
+    node->value = value;
+    node->next = temp;
+    temp->next = nextNode;
+  } else {
     
-    while(newnode->next != nullptr) {
-      newnode=newnode->next;
-      
-      if(newnode->value > val) {
-
-	tmpnode=newnode->next;
-	newnode=tmpnode;
-	break;
-      }
+    if (node->next == nullptr) { 
+      node->next = new Node();
+      node->next->value = value;
+    } else {  
+      insert_helper(node->next, value);
     }
-    
-    //insert at end if we reach nullptr
+ 
+  }
 
-    if(newnode->next = nullptr){
-      tmpnode->next = newnode->next;
-      newnode->next = tmpnode;
-    }
-    tmpnode->next=nullptr;
-        delete tmpnode;
-  }    
-  */
 
- else {
-      Node* newnode = new Node();
-      newnode->value=val;
-      first->next=newnode;
-}
+
+
 }
 
 void List::print() const
